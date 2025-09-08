@@ -14,6 +14,16 @@ function Games() {
       textColor: 'text-pink-800',
       game: 'puzzle',
     },
+    {
+      id: 2,
+      title: "Color Tap",
+      description: "Ranglarni eslab qoling va takrorlang",
+      icon: '🎨',
+      bgColor: 'bg-blue-100 hover:bg-blue-200',
+      iconBg: 'bg-blue-400',
+      textColor: 'text-blue-800',
+      game: 'colorTap',
+    },
   ];
 
   const openGame = (game) => {
@@ -31,6 +41,9 @@ function Games() {
         {selectedGame && selectedGame.game === 'puzzle' && (
           <PuzzleGame onClose={closeGame} />
         )}
+        {selectedGame && selectedGame.game === 'colorTap' && (
+          <ColorTapGame onClose={closeGame} />
+        )}
 
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-pink-800 mb-6">🎮 O'yinlar</h1>
@@ -40,7 +53,7 @@ function Games() {
         </div>
 
         {/* O'yinlar kartochkalari */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {games.map((game) => (
             <div
               key={game.id}
@@ -272,6 +285,188 @@ function PuzzleGame({ onClose }) {
                       )}
                     </div>
                   ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ColorTapGame({ onClose }) {
+  const [sequence, setSequence] = useState([]);
+  const [userSequence, setUserSequence] = useState([]);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isShowingSequence, setIsShowingSequence] = useState(false);
+  const [score, setScore] = useState(0);
+  const [level, setLevel] = useState(1);
+  const [gameOver, setGameOver] = useState(false);
+  const [activeColor, setActiveColor] = useState(null);
+
+  const colors = [
+    { id: 0, name: 'Qizil', bgColor: 'bg-red-400', activeBg: 'bg-red-600', sound: '🔴' },
+    { id: 1, name: 'Yashil', bgColor: 'bg-green-400', activeBg: 'bg-green-600', sound: '🟢' },
+    { id: 2, name: 'Sariq', bgColor: 'bg-yellow-400', activeBg: 'bg-yellow-600', sound: '🟡' },
+    { id: 3, name: 'Ko\'k', bgColor: 'bg-blue-400', activeBg: 'bg-blue-600', sound: '🔵' }
+  ];
+
+  const startGame = () => {
+    setSequence([]);
+    setUserSequence([]);
+    setCurrentStep(0);
+    setScore(0);
+    setLevel(1);
+    setGameOver(false);
+    setIsPlaying(true);
+    nextRound();
+  };
+
+  const nextRound = () => {
+    const newColor = Math.floor(Math.random() * 4);
+    const newSequence = [...sequence, newColor];
+    setSequence(newSequence);
+    setUserSequence([]);
+    setCurrentStep(0);
+    showSequence(newSequence);
+  };
+
+  const showSequence = async (seq) => {
+    setIsShowingSequence(true);
+    
+    for (let i = 0; i < seq.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, 600));
+      setActiveColor(seq[i]);
+      await new Promise(resolve => setTimeout(resolve, 400));
+      setActiveColor(null);
+    }
+    
+    setIsShowingSequence(false);
+  };
+
+  const handleColorClick = (colorId) => {
+    if (!isPlaying || isShowingSequence) return;
+
+    setActiveColor(colorId);
+    setTimeout(() => setActiveColor(null), 200);
+
+    const newUserSequence = [...userSequence, colorId];
+    setUserSequence(newUserSequence);
+
+    if (colorId !== sequence[currentStep]) {
+      // Noto'g'ri rang
+      setGameOver(true);
+      setIsPlaying(false);
+      return;
+    }
+
+    if (newUserSequence.length === sequence.length) {
+      // To'g'ri ketma-ketlik tugallandi
+      setScore(score + sequence.length * 10);
+      setLevel(level + 1);
+      
+      setTimeout(() => {
+        nextRound();
+      }, 1000);
+    } else {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-purple-200 bg-opacity-20 backdrop-blur-sm z-50 flex items-center justify-center p-2 h-screen overflow-hidden">
+      <div className="bg-white bg-opacity-95 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white border-opacity-30 flex flex-col max-w-3xl w-full max-h-full">
+        <div className="flex justify-between items-center mb-8 flex-shrink-0">
+          <div className="flex items-center space-x-6">
+            <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-3xl">🎨</span>
+            </div>
+            <h2 className="text-4xl font-bold text-blue-800">Color Tap</h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="bg-red-400 hover:bg-red-500 text-white font-bold py-4 px-6 rounded-full text-2xl shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div className="flex-1 flex flex-col justify-center overflow-hidden">
+          {!isPlaying && !gameOver ? (
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-blue-800 mb-6">🎯 O'yinni boshlang!</h3>
+              <p className="text-xl text-gray-600 mb-8">
+                Ranglar ketma-ketligini eslab qoling va takrorlang
+              </p>
+              <button
+                onClick={startGame}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+              >
+                🎮 Boshlash
+              </button>
+            </div>
+          ) : gameOver ? (
+            <div className="text-center">
+              <div className="text-6xl mb-4">😔</div>
+              <h3 className="text-3xl font-bold text-red-800 mb-4">O'yin tugadi!</h3>
+              <p className="text-xl text-gray-600 mb-2">Ball: {score}</p>
+              <p className="text-lg text-gray-600 mb-8">Daraja: {level - 1}</p>
+              <button
+                onClick={startGame}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+              >
+                🔄 Qayta boshlash
+              </button>
+            </div>
+          ) : (
+            <div>
+              <div className="flex justify-center items-center mb-6 flex-shrink-0">
+                <div className="flex items-center space-x-6">
+                  <div className="bg-green-100 px-6 py-3 rounded-full border-3 border-green-200">
+                    <span className="text-green-800 font-bold text-lg">🏆 Ball: {score}</span>
+                  </div>
+                  <div className="bg-purple-100 px-6 py-3 rounded-full border-3 border-purple-200">
+                    <span className="text-purple-800 font-bold text-lg">📈 Daraja: {level}</span>
+                  </div>
+                  <div className="bg-orange-100 px-6 py-3 rounded-full border-3 border-orange-200">
+                    <span className="text-orange-800 font-bold text-lg">
+                      {isShowingSequence ? '👀 Kuzating' : '✋ Siz navbatdasi'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-8 rounded-3xl shadow-inner border-4 border-gray-200 flex-shrink-0">
+                <div className="grid grid-cols-2 gap-6 max-w-lg mx-auto">
+                  {colors.map((color) => (
+                    <button
+                      key={color.id}
+                      onClick={() => handleColorClick(color.id)}
+                      disabled={isShowingSequence}
+                      className={`
+                        w-32 h-32 rounded-3xl border-4 border-white shadow-lg transition-all duration-200 font-bold text-white text-xl
+                        ${activeColor === color.id ? color.activeBg : color.bgColor}
+                        ${isShowingSequence ? 'cursor-not-allowed opacity-70' : 'cursor-pointer hover:scale-110 active:scale-95'}
+                        transform
+                      `}
+                    >
+                      <div className="text-4xl mb-2">{color.sound}</div>
+                      <div className="text-sm">{color.name}</div>
+                    </button>
+                  ))}
+                </div>
+                
+                <div className="text-center mt-6">
+                  <p className="text-lg text-gray-600">
+                    Ketma-ketlik: {sequence.length} rang
+                  </p>
+                  {userSequence.length > 0 && (
+                    <p className="text-md text-blue-600 mt-2">
+                      Sizning javobingiz: {userSequence.length}/{sequence.length}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
