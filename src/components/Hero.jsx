@@ -7,8 +7,9 @@ function Hero() {
       title: 'Darslar',
       description: 'Ta\'limiy darslar va mashqlar',
       icon: '📚',
-      bg: 'var(--color-primary-100)',
-      hover: 'var(--color-primary-200)',
+      bgColor: 'bg-blue-100 hover:bg-blue-200',
+      iconBg: 'bg-blue-400',
+      textColor: 'text-blue-800',
       path: '/lessons'
     },
     {
@@ -16,8 +17,9 @@ function Hero() {
       title: 'O\'yinlar',
       description: 'Qiziqarli o\'quv o\'yinlari',
       icon: '🎮',
-      bg: 'var(--color-success-100)',
-      hover: 'var(--color-success-200)',
+      bgColor: 'bg-pink-100 hover:bg-pink-200',
+      iconBg: 'bg-pink-400',
+      textColor: 'text-pink-800',
       path: '/games'
     },
     {
@@ -25,31 +27,21 @@ function Hero() {
       title: 'Multfilmlar',
       description: 'Ta\'limiy multfilmlar',
       icon: '🎬',
-      bg: 'var(--color-purple-100)',
-      hover: 'var(--color-purple-200)',
+      bgColor: 'bg-yellow-100 hover:bg-yellow-200',
+      iconBg: 'bg-yellow-400',
+      textColor: 'text-yellow-800',
       path: '/cartoons'
     }
   ];
 
   return (
-    <div 
-      className="py-20"
-      style={{
-        background: `linear-gradient(to bottom right, var(--color-primary-50), var(--color-secondary-100))`
-      }}
-    >
+    <div className="bg-purple-50 py-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h1 
-            className="text-6xl font-bold mb-6"
-            style={{ color: 'var(--color-gray-800)' }}
-          >
+          <h1 className="text-6xl font-bold text-purple-800 mb-6">
             Bolalar Ta'lim Dunyosi
           </h1>
-          <p 
-            className="text-2xl"
-            style={{ color: 'var(--color-gray-600)' }}
-          >
+          <p className="text-2xl text-purple-600">
             3-6 yosh bolalar uchun o'quv va o'yin platformasi
           </p>
         </div>
@@ -59,27 +51,16 @@ function Hero() {
             <Link
               key={card.id}
               to={card.path}
-              className="rounded-2xl p-12 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-h-[300px] flex flex-col justify-center"
-              style={{
-                backgroundColor: card.bg
-              }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = card.hover}
-              onMouseLeave={(e) => e.target.style.backgroundColor = card.bg}
+              className={`${card.bgColor} rounded-3xl p-8 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-h-[280px] flex flex-col justify-center border-4 border-white`}
             >
               <div className="text-center">
-                <div className="text-8xl mb-6">
-                  {card.icon}
+                <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center ${card.iconBg} text-white shadow-lg`}>
+                  <span className="text-3xl">{card.icon}</span>
                 </div>
-                <h3 
-                  className="text-3xl font-bold mb-4"
-                  style={{ color: 'var(--color-gray-800)' }}
-                >
+                <h3 className={`text-2xl font-bold ${card.textColor} mb-3`}>
                   {card.title}
                 </h3>
-                <p 
-                  className="text-lg"
-                  style={{ color: 'var(--color-gray-600)' }}
-                >
+                <p className={`text-lg ${card.textColor} opacity-80`}>
                   {card.description}
                 </p>
               </div>
