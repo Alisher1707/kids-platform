@@ -307,10 +307,10 @@ function ColorTapGame({ onClose }) {
   const [activeColor, setActiveColor] = useState(null);
 
   const colors = [
-    { id: 0, name: 'Qizil', bgColor: 'bg-red-400', activeBg: 'bg-red-600', sound: '🔴' },
-    { id: 1, name: 'Yashil', bgColor: 'bg-green-400', activeBg: 'bg-green-600', sound: '🟢' },
-    { id: 2, name: 'Sariq', bgColor: 'bg-yellow-400', activeBg: 'bg-yellow-600', sound: '🟡' },
-    { id: 3, name: 'Ko\'k', bgColor: 'bg-blue-400', activeBg: 'bg-blue-600', sound: '🔵' }
+    { id: 0, name: 'Qizil', bgColor: 'bg-red-300', activeBg: 'bg-red-500', sound: '🔴', shadow: 'shadow-red-400' },
+    { id: 1, name: 'Yashil', bgColor: 'bg-green-300', activeBg: 'bg-green-500', sound: '🟢', shadow: 'shadow-green-400' },
+    { id: 2, name: 'Sariq', bgColor: 'bg-yellow-300', activeBg: 'bg-yellow-500', sound: '🟡', shadow: 'shadow-yellow-400' },
+    { id: 3, name: 'Ko\'k', bgColor: 'bg-blue-300', activeBg: 'bg-blue-500', sound: '🔵', shadow: 'shadow-blue-400' }
   ];
 
   const startGame = () => {
@@ -446,14 +446,27 @@ function ColorTapGame({ onClose }) {
                       onClick={() => handleColorClick(color.id)}
                       disabled={isShowingSequence}
                       className={`
-                        w-32 h-32 rounded-3xl border-4 border-white shadow-lg transition-all duration-200 font-bold text-white text-xl
-                        ${activeColor === color.id ? color.activeBg : color.bgColor}
-                        ${isShowingSequence ? 'cursor-not-allowed opacity-70' : 'cursor-pointer hover:scale-110 active:scale-95'}
+                        w-36 h-36 rounded-3xl border-4 transition-all duration-300 font-bold text-white text-xl relative overflow-hidden
+                        ${activeColor === color.id 
+                          ? `${color.activeBg} border-yellow-400 shadow-2xl ${color.shadow} scale-110 brightness-125` 
+                          : `${color.bgColor} border-white shadow-lg`
+                        }
+                        ${isShowingSequence ? 'cursor-not-allowed' : 'cursor-pointer hover:scale-105 active:scale-95'}
                         transform
                       `}
+                      style={{
+                        boxShadow: activeColor === color.id 
+                          ? `0 0 30px ${color.id === 0 ? '#ef4444' : color.id === 1 ? '#22c55e' : color.id === 2 ? '#eab308' : '#3b82f6'}, 0 0 60px ${color.id === 0 ? '#ef4444' : color.id === 1 ? '#22c55e' : color.id === 2 ? '#eab308' : '#3b82f6'}80`
+                          : undefined
+                      }}
                     >
-                      <div className="text-4xl mb-2">{color.sound}</div>
-                      <div className="text-sm">{color.name}</div>
+                      {activeColor === color.id && (
+                        <div className="absolute inset-0 bg-white bg-opacity-30 animate-pulse"></div>
+                      )}
+                      <div className="relative z-10">
+                        <div className="text-5xl mb-2">{color.sound}</div>
+                        <div className="text-base font-black drop-shadow-lg">{color.name}</div>
+                      </div>
                     </button>
                   ))}
                 </div>
