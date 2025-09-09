@@ -16,6 +16,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-red-400',
       textColor: 'text-red-800',
       borderColor: 'border-red-200',
+      letterImage: "🍎", // A harfi uchun qiziq rasm - olma
     },
     {
       id: 2,
@@ -29,6 +30,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-blue-400',
       textColor: 'text-blue-800',
       borderColor: 'border-blue-200',
+      letterImage: "🏀",
     },
     {
       id: 3,
@@ -42,6 +44,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-green-400',
       textColor: 'text-green-800',
       borderColor: 'border-green-200',
+      letterImage: "🌳",
     },
     {
       id: 4,
@@ -55,6 +58,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-yellow-400',
       textColor: 'text-yellow-800',
       borderColor: 'border-yellow-200',
+      letterImage: "🐴",
     },
     {
       id: 5,
@@ -68,6 +72,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-purple-400',
       textColor: 'text-purple-800',
       borderColor: 'border-purple-200',
+      letterImage: "🍂",
     },
     {
       id: 6,
@@ -81,6 +86,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-pink-400',
       textColor: 'text-pink-800',
       borderColor: 'border-pink-200',
+      letterImage: "🌹",
     },
     {
       id: 7,
@@ -94,6 +100,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-indigo-400',
       textColor: 'text-indigo-800',
       borderColor: 'border-indigo-200',
+      letterImage: "🌬️",
     },
     {
       id: 8,
@@ -107,6 +114,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-teal-400',
       textColor: 'text-teal-800',
       borderColor: 'border-teal-200',
+      letterImage: "👷",
     },
     {
       id: 9,
@@ -120,6 +128,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-cyan-400',
       textColor: 'text-cyan-800',
       borderColor: 'border-cyan-200',
+      letterImage: "🏠",
     },
     {
       id: 10,
@@ -133,6 +142,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-orange-400',
       textColor: 'text-orange-800',
       borderColor: 'border-orange-200',
+      letterImage: "📚",
     },
     {
       id: 11,
@@ -146,6 +156,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-lime-400',
       textColor: 'text-lime-800',
       borderColor: 'border-lime-200',
+      letterImage: "🌷",
     },
     {
       id: 12,
@@ -159,6 +170,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-emerald-400',
       textColor: 'text-emerald-800',
       borderColor: 'border-emerald-200',
+      letterImage: "👩",
     },
     {
       id: 13,
@@ -172,6 +184,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-violet-400',
       textColor: 'text-violet-800',
       borderColor: 'border-violet-200',
+      letterImage: "☀️",
     },
     {
       id: 14,
@@ -185,6 +198,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-sky-400',
       textColor: 'text-sky-800',
       borderColor: 'border-sky-200',
+      letterImage: "👩",
     },
     {
       id: 15,
@@ -198,6 +212,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-rose-400',
       textColor: 'text-rose-800',
       borderColor: 'border-rose-200',
+      letterImage: "🍛",
     },
     {
       id: 16,
@@ -211,6 +226,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-amber-400',
       textColor: 'text-amber-800',
       borderColor: 'border-amber-200',
+      letterImage: "❄️",
     },
     {
       id: 17,
@@ -224,6 +240,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-red-500',
       textColor: 'text-red-800',
       borderColor: 'border-red-200',
+      letterImage: "🌈",
     },
     {
       id: 18,
@@ -237,6 +254,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-blue-500',
       textColor: 'text-blue-800',
       borderColor: 'border-blue-200',
+      letterImage: "👋",
     },
     {
       id: 19,
@@ -250,6 +268,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-green-500',
       textColor: 'text-green-800',
       borderColor: 'border-green-200',
+      letterImage: "🚗",
     },
     {
       id: 20,
@@ -263,6 +282,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-yellow-500',
       textColor: 'text-yellow-800',
       borderColor: 'border-yellow-200',
+      letterImage: "🏠",
     },
     {
       id: 21,
@@ -276,6 +296,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-purple-500',
       textColor: 'text-purple-800',
       borderColor: 'border-purple-200',
+      letterImage: "⏰",
     },
     {
       id: 22,
@@ -289,6 +310,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-pink-500',
       textColor: 'text-pink-800',
       borderColor: 'border-pink-200',
+      letterImage: "✉️",
     },
     {
       id: 23,
@@ -302,6 +324,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-indigo-500',
       textColor: 'text-indigo-800',
       borderColor: 'border-indigo-200',
+      letterImage: "☀️",
     },
     {
       id: 24,
@@ -315,6 +338,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-teal-500',
       textColor: 'text-teal-800',
       borderColor: 'border-teal-200',
+      letterImage: "💪",
     },
     {
       id: 25,
@@ -328,6 +352,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-cyan-500',
       textColor: 'text-cyan-800',
       borderColor: 'border-cyan-200',
+      letterImage: "💡",
     },
     {
       id: 26,
@@ -341,6 +366,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-orange-500',
       textColor: 'text-orange-800',
       borderColor: 'border-orange-200',
+      letterImage: "📚",
     },
     {
       id: 27,
@@ -354,6 +380,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-lime-500',
       textColor: 'text-lime-800',
       borderColor: 'border-lime-200',
+      letterImage: "🦁",
     },
     {
       id: 28,
@@ -367,6 +394,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-emerald-500',
       textColor: 'text-emerald-800',
       borderColor: 'border-emerald-200',
+      letterImage: "☕",
     },
     {
       id: 29,
@@ -380,6 +408,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-violet-500',
       textColor: 'text-violet-800',
       borderColor: 'border-violet-200',
+      letterImage: "🔔",
     },
     {
       id: 30,
@@ -393,6 +422,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-sky-500',
       textColor: 'text-sky-800',
       borderColor: 'border-sky-200',
+      letterImage: "🎓",
     },
     {
       id: 31,
@@ -406,6 +436,7 @@ function OnaTili({ onBack, onLessonSelect }) {
       iconBg: 'bg-rose-500',
       textColor: 'text-rose-800',
       borderColor: 'border-rose-200',
+      letterImage: "🌈",
     },
   ];
 
@@ -443,9 +474,14 @@ function OnaTili({ onBack, onLessonSelect }) {
             >
               <div className="text-center">
                 <div
-                  className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${lesson.iconBg} text-white shadow-lg`}
+                  className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${lesson.iconBg} text-white shadow-lg relative`}
                 >
                   <span className="text-2xl font-bold">{lesson.letter}</span>
+                  {lesson.letterImage && (
+                    <div className="absolute -top-2 -right-2 text-3xl animate-bounce">
+                      {lesson.letterImage}
+                    </div>
+                  )}
                 </div>
                 <div className="bg-white bg-opacity-80 rounded-full px-3 py-1 mb-3">
                   <span className={`text-sm font-bold ${lesson.textColor}`}>

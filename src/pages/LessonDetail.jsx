@@ -1,6 +1,85 @@
 import { useState } from 'react';
 
 function LessonDetail({ lesson, onBack }) {
+  const playLetterSound = (letter) => {
+    // Web Speech API yordamida harfni talaffuz qilish
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(letter);
+      // Rus harflari uchun rus tilini, ingliz harflari uchun ingliz tilini aniqlash
+      const isRussianLetter = /[А-Яа-яЁё]/.test(letter);
+      utterance.lang = isRussianLetter ? 'ru-RU' : 'en-US';
+      utterance.rate = 0.8; // Sekin talaffuz
+      utterance.pitch = 1.2; // Yuqori ovoz
+      speechSynthesis.speak(utterance);
+    }
+  };
+
+  const getLetterImage = (letter, words) => {
+    const letterImageMap = {
+      // Ingliz harflari
+      'A': '🍎', // Apple
+      'B': '⚽', // Ball
+      'C': '🐱', // Cat
+      'D': '🐕', // Dog
+      'E': '🐘', // Elephant
+      'F': '🐟', // Fish
+      'G': '🐐', // Goat
+      'H': '🏠', // House
+      'I': '🧊', // Ice
+      'J': '🦘', // Jump
+      'K': '🗝️', // Key
+      'L': '❤️', // Love
+      'M': '🌙', // Moon
+      'N': '👃', // Nose
+      'O': '🍊', // Orange
+      'P': '✏️', // Pen
+      'Q': '👸', // Queen
+      'R': '🔴', // Red
+      'S': '☀️', // Sun
+      'T': '🌳', // Tree
+      'U': '☂️', // Umbrella
+      'V': '🗣️', // Voice
+      'W': '💧', // Water
+      'X': '🩻', // X-ray
+      'Y': '💛', // Yellow
+      'Z': '🦓', // Zebra
+      // Rus harflari
+      'А': '🍉', // Арбуз
+      'Б': '🍌', // Банан
+      'В': '🐺', // Волк
+      'Г': '🦢', // Гусь
+      'Д': '🏠', // Дом
+      'Е': '🦝', // Енот
+      'Ё': '🦔', // Ёж
+      'Ж': '🪲', // Жук
+      'З': '🐰', // Заяц
+      'И': '🎮', // Игра
+      'Й': '🥛', // Йогурт
+      'К': '🐱', // Кот
+      'Л': '🦁', // Лев
+      'М': '🐻', // Медведь
+      'Н': '🦏', // Носорог
+      'О': '🦌', // Олень
+      'П': '🐓', // Петух
+      'Р': '🐟', // Рыба
+      'С': '☀️', // Солнце
+      'Т': '🐅', // Тигр
+      'У': '🦆', // Утка
+      'Ф': '🦩', // Фламинго
+      'Х': '🐹', // Хомяк
+      'Ц': '🌸', // Цветок
+      'Ч': '🐢', // Черепаха
+      'Ш': '🎈', // Шар
+      'Щ': '🐶', // Щенок
+      'Ъ': '🏢', // Подъезд
+      'Ы': '🧼', // Мыло
+      'Ь': '🐻', // Медведь
+      'Э': '🍦', // Эскимо
+      'Ю': '🌀', // Юла
+      'Я': '🍎', // Яблоко
+    };
+    return letterImageMap[letter] || '';
+  };
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
   const nextWord = () => {
@@ -43,12 +122,28 @@ function LessonDetail({ lesson, onBack }) {
           <div className="space-y-6">
             <div className="bg-white rounded-3xl p-8 shadow-lg border-4 border-green-200">
               <div className="text-center">
-                <div className={`w-40 h-40 mx-auto mb-6 rounded-3xl flex items-center justify-center ${lesson.iconBg} text-white shadow-2xl`}>
+                <div className={`w-40 h-40 mx-auto mb-6 rounded-3xl flex items-center justify-center ${lesson.iconBg} text-white shadow-2xl relative`}>
                   <span className="text-8xl font-bold">{lesson.letter}</span>
+                  {(lesson.letterImage || getLetterImage(lesson.letter, lesson.words)) && (
+                    <div className="absolute -top-4 -right-4 text-6xl animate-bounce">
+                      {lesson.letterImage || getLetterImage(lesson.letter, lesson.words)}
+                    </div>
+                  )}
                 </div>
-                <h2 className={`text-3xl font-bold ${lesson.textColor} mb-4`}>
-                  {lesson.letter} harfi
-                </h2>
+                <div className="flex items-center justify-center space-x-3 mb-4">
+                  <h2 className={`text-3xl font-bold ${lesson.textColor}`}>
+                    {lesson.letter} harfi
+                  </h2>
+                  {((/[A-Za-z]/.test(lesson.letter) && lesson.words && lesson.words.some(word => /^[A-Za-z]+$/.test(word))) || /[А-Яа-яЁё]/.test(lesson.letter)) && (
+                    <button
+                      onClick={() => playLetterSound(lesson.letter)}
+                      className="w-10 h-10 bg-yellow-400 hover:bg-yellow-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-200 animate-pulse"
+                      title={`${lesson.letter} harfini tinglang`}
+                    >
+                      <span className="text-xl">🔊</span>
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
 

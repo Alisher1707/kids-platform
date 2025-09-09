@@ -21,8 +21,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 2,
       letter: "B",
-      title: "B harfi va so'zlar",
-      description: "B harfi bilan boshlangan ingliz so'zlari",
+      title: "B harfi bilan tanishish",
+      description: "Ingliz alifbosining ikkinchi harfi - B",
       words: ["Ball", "Book", "Bird", "Bus"],
       images: ["⚽", "📚", "🐦", "🚌", "🐻", "🍌", "🦋", "🎈", "🔔", "🚲"],
       activity: "B harfi bilan boshlanadigan buyumlarni sanang",
@@ -34,8 +34,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 3,
       letter: "C",
-      title: "C harfi va qo'llanishi",
-      description: "C harfi bilan ingliz so'z yasash",
+      title: "C harfi bilan tanishish",
+      description: "Ingliz alifbosining uchinchi harfi - C",
       words: ["Cat", "Car", "Cup", "Cake"],
       images: ["🐱", "🚗", "☕", "🧁", "🐄", "🥕", "🍪", "🌸", "🎯", "💎"],
       activity: "C harfi bilan boshlanadigan narsalarni toping",
@@ -47,8 +47,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 4,
       letter: "D",
-      title: "D harfi va tovushlari",
-      description: "D harfi bilan ingliz so'zlar tuzish",
+      title: "D harfi bilan tanishish",
+      description: "Ingliz alifbosining to'rtinchi harfi - D",
       words: ["Dog", "Duck", "Door", "Doll"],
       images: ["🐕", "🦆", "🚪", "🪆", "🦌", "🍎", "👁️", "🎭", "⚡", "🏠"],
       activity: "D harfi bilan hayvonlar va buyumlarni toping",
@@ -60,8 +60,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 5,
       letter: "E",
-      title: "E harfi va nutqi",
-      description: "E harfi bilan yangi ingliz so'zlar",
+      title: "E harfi bilan tanishish",
+      description: "Ingliz alifbosining beshinchi harfi - E",
       words: ["Elephant", "Egg", "Eye", "Ear"],
       images: ["🐘", "🥚", "👁️", "👂", "🦅", "🍎", "⚡", "🎭", "🌍", "🏠"],
       activity: "E harfi bilan tananing qismlari va hayvonlarni o'rganing",
@@ -73,8 +73,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 6,
       letter: "F",
-      title: "F harfi va qo'shimchalar",
-      description: "F harfi bilan ingliz gaplar tuzish",
+      title: "F harfi bilan tanishish",
+      description: "Ingliz alifbosining oltinchi harfi - F",
       words: ["Fish", "Fire", "Flag", "Flower"],
       images: ["🐟", "🔥", "🏁", "🌸", "🍓", "🎪", "📷", "⚽", "🦋", "🌈"],
       activity: "F harfi bilan boshlanadigan narsalarni toping",
@@ -86,8 +86,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 7,
       letter: "G",
-      title: "G harfi va undoshi",
-      description: "G harfi bilan ingliz so'zlarni o'qish",
+      title: "G harfi bilan tanishish",
+      description: "Ingliz alifbosining yettinchi harfi - G",
       words: ["Goat", "Green", "Gift", "Girl"],
       images: ["🐐", "💚", "🎁", "👧", "🍇", "🎸", "🌍", "⚙️", "🎯", "🦒"],
       activity: "G harfi bilan boshlanadigan narsalarni toping",
@@ -99,8 +99,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 8,
       letter: "H",
-      title: "H harfi va unli tovushi",
-      description: "H harfi bilan yangi ingliz so'zlar",
+      title: "H harfi bilan tanishish",
+      description: "Ingliz alifbosining sakkizinchi harfi - H",
       words: ["House", "Hat", "Horse", "Hand"],
       images: ["🏠", "🎩", "🐴", "🤚", "🍯", "🎵", "📦", "🌎", "ℹ️", "🎆"],
       activity: "H harfi bilan boshlanadigan narsalarni toping",
@@ -112,8 +112,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 9,
       letter: "I",
-      title: "I harfi va imlo qoidalari",
-      description: "I harfi bilan ingliz gaplar",
+      title: "I harfi bilan tanishish",
+      description: "Ingliz alifbosining to'qqizinchi harfi - I",
       words: ["Ice", "Ink", "Iron", "Insect"],
       images: ["🧊", "🖊️", "👔", "🐛", "🍦", "💪", "✨", "🧘", "🌈", "🎆"],
       activity: "I harfi bilan boshlanadigan narsalarni toping",
@@ -125,8 +125,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 10,
       letter: "J",
-      title: "J harfi va nutq rivojlantirish",
-      description: "J harfi bilan ingliz hikoyalar",
+      title: "J harfi bilan tanishish",
+      description: "Ingliz alifbosining o'ninchi harfi - J",
       words: ["Jump", "Juice", "Jacket", "Jar"],
       images: ["🦘", "🧃", "🧥", "🏺", "💎", "🗝️", "🏆", "🥝", "🎂", "🎨"],
       activity: "J harfi bilan boshlanadigan narsalarni toping",
@@ -138,8 +138,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 11,
       letter: "K",
-      title: "K harfi va she'rlar",
-      description: "K harfi bilan ingliz qofiyali so'zlar",
+      title: "K harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n birinchi harfi - K",
       words: ["Key", "King", "Kite", "Kitchen"],
       images: ["🗝️", "👑", "🪁", "🍳", "🥝", "📚", "🔍", "🎆", "✨", "💕"],
       activity: "K harfi bilan boshlanadigan narsalarni toping",
@@ -151,8 +151,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 12,
       letter: "L",
-      title: "L harfi va oila so'zlari",
-      description: "L harfi bilan ingliz oila a'zolari",
+      title: "L harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n ikkinchi harfi - L",
       words: ["Love", "Light", "Lion", "Leaf"],
       images: ["❤️", "💡", "🦁", "🍃", "🐞", "🎵", "🌙", "💪", "👐", "🏆"],
       activity: "L harfi bilan boshlanadigan narsalarni toping",
@@ -164,8 +164,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 13,
       letter: "M",
-      title: "M harfi va tabiat so'zlari",
-      description: "M harfi bilan ingliz tabiat haqida",
+      title: "M harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n uchinchi harfi - M",
       words: ["Moon", "Mouse", "Mother", "Music"],
       images: ["🌙", "🐭", "👩", "🎵", "🐵", "💪", "🍄", "🔍", "🎯", "💎"],
       activity: "M harfi bilan boshlanadigan narsalarni toping",
@@ -177,8 +177,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 14,
       letter: "N",
-      title: "N harfi va unli tovush",
-      description: "N harfi bilan ingliz so'z yasash",
+      title: "N harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n to'rtinchi harfi - N",
       words: ["Nose", "Night", "Nest", "Number"],
       images: ["👃", "🌙", "🪺", "🔢", "🌊", "🌟", "🎵", "🎆", "📚", "☀️"],
       activity: "N harfi bilan boshlanadigan narsalarni toping",
@@ -190,8 +190,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 15,
       letter: "O",
-      title: "O harfi va hayvonlar",
-      description: "O harfi bilan ingliz hayvon nomlari",
+      title: "O harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n beshinchi harfi - O",
       words: ["Orange", "Owl", "Ocean", "Octopus"],
       images: ["🍊", "🦉", "🌊", "🐙", "🐂", "🍕", "📷", "🎆", "💪", "🎭"],
       activity: "O harfi bilan boshlanadigan narsalarni toping",
@@ -203,8 +203,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 16,
       letter: "P",
-      title: "P harfi va qishki so'zlar",
-      description: "P harfi bilan ingliz so'zlar",
+      title: "P harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n oltinchi harfi - P",
       words: ["Pen", "Pizza", "Plane", "Purple"],
       images: ["✏️", "🍕", "✈️", "💜", "🌹", "📚", "🚗", "🏆", "🎆", "✨"],
       activity: "P harfi bilan boshlanadigan narsalarni toping",
@@ -216,8 +216,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 17,
       letter: "Q",
-      title: "Q harfi va ranglar",
-      description: "Q harfi bilan ingliz ranglarni o'rganish",
+      title: "Q harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n yettinchi harfi - Q",
       words: ["Queen", "Question", "Quick", "Quiet"],
       images: ["👸", "❓", "⚡", "🤫", "🔴", "🚀", "🏆", "📚", "✨", "🎵"],
       activity: "Q harfi bilan boshlanadigan narsalarni toping",
@@ -229,8 +229,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 18,
       letter: "R",
-      title: "R harfi va sport so'zlari",
-      description: "R harfi bilan ingliz sport turlari",
+      title: "R harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n sakkizinchi harfi - R",
       words: ["Red", "Run", "Robot", "Rain"],
       images: ["🔴", "🏃", "🤖", "🌧️", "☀️", "🏊", "🎆", "🎨", "📚", "✨"],
       activity: "R harfi bilan boshlanadigan narsalarni toping",
@@ -242,8 +242,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 19,
       letter: "S",
-      title: "S harfi va transport",
-      description: "S harfi bilan ingliz transport turlari",
+      title: "S harfi bilan tanishish",
+      description: "Ingliz alifbosining o'n to'qqizinchi harfi - S",
       words: ["Sun", "Star", "Snake", "School"],
       images: ["☀️", "⭐", "🐍", "🏫", "🚗", "🚂", "🐅", "🎯", "🎆", "✨"],
       activity: "S harfi bilan boshlanadigan narsalarni toping",
@@ -255,8 +255,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 20,
       letter: "T",
-      title: "T harfi va uy-joy so'zlari",
-      description: "T harfi bilan ingliz uy buyumlari",
+      title: "T harfi bilan tanishish",
+      description: "Ingliz alifbosining yigirmanchi harfi - T",
       words: ["Tree", "Tiger", "Table", "Toy"],
       images: ["🌳", "🐅", "🪑", "🧸", "🦄", "🎆", "📚", "✨", "🎭", "🎨"],
       activity: "T harfi bilan boshlanadigan narsalarni toping",
@@ -268,8 +268,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 21,
       letter: "U",
-      title: "U harfi va vaqt so'zlari",
-      description: "U harfi bilan ingliz vaqt haqida",
+      title: "U harfi bilan tanishish",
+      description: "Ingliz alifbosining yigirma birinchi harfi - U",
       words: ["Under", "Up", "Umbrella", "Uncle"],
       images: ["⬇️", "⬆️", "☂️", "👨", "🎨", "🎆", "📚", "✨", "🎭", "🏆"],
       activity: "U harfi bilan boshlanadigan narsalarni toping",
@@ -281,8 +281,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 22,
       letter: "V",
-      title: "V harfi va xalq so'zlari",
-      description: "V harfi bilan ingliz an'analari",
+      title: "V harfi bilan tanishish",
+      description: "Ingliz alifbosining yigirma ikkinchi harfi - V",
       words: ["Voice", "Village", "Van", "Violin"],
       images: ["🗣️", "🏘️", "🚐", "🎻", "🎆", "🎨", "📚", "✨", "🎭", "🏆"],
       activity: "V harfi bilan boshlanadigan narsalarni toping",
@@ -294,8 +294,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 23,
       letter: "W",
-      title: "W harfi va yoz faslida",
-      description: "W harfi bilan ingliz yozgi so'zlar",
+      title: "W harfi bilan tanishish",
+      description: "Ingliz alifbosining yigirma uchinchi harfi - W",
       words: ["Water", "Wind", "Window", "Watch"],
       images: ["💧", "💨", "🪟", "⌚", "🎆", "🎨", "📚", "✨", "🎭", "🏆"],
       activity: "W harfi bilan boshlanadigan narsalarni toping",
@@ -307,8 +307,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 24,
       letter: "X",
-      title: "X harfi va maxsus so'zlar",
-      description: "X harfi bilan ingliz maxsus so'zlar",
+      title: "X harfi bilan tanishish",
+      description: "Ingliz alifbosining yigirma to'rtinchi harfi - X",
       words: ["X-ray", "Xylophone", "Box", "Fox"],
       images: ["🩻", "🎵", "📦", "🦊", "🎆", "🎨", "📚", "✨", "🎭", "🏆"],
       activity: "X harfi bilan boshlanadigan narsalarni toping",
@@ -320,8 +320,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 25,
       letter: "Y",
-      title: "Y harfi va rang so'zlari",
-      description: "Y harfi bilan ingliz ranglar",
+      title: "Y harfi bilan tanishish",
+      description: "Ingliz alifbosining yigirma beshinchi harfi - Y",
       words: ["Yellow", "Yes", "Young", "Year"],
       images: ["💛", "✅", "👶", "📅", "🎆", "🎨", "📚", "✨", "🎭", "🏆"],
       activity: "Y harfi bilan boshlanadigan narsalarni toping",
@@ -333,8 +333,8 @@ function EnglishLetters({ onBack, onLessonSelect }) {
     {
       id: 26,
       letter: "Z",
-      title: "Z harfi va maxsus so'zlar",
-      description: "Z harfi bilan ingliz so'zlar",
+      title: "Z harfi bilan tanishish",
+      description: "Ingliz alifbosining yigirma oltinchi harfi - Z",
       words: ["Zebra", "Zero", "Zoo", "Zone"],
       images: ["🦓", "0️⃣", "🦁", "🏠", "🎆", "🎨", "📚", "✨", "🎭", "🏆"],
       activity: "Z harfi bilan boshlanadigan narsalarni toping",
@@ -379,9 +379,14 @@ function EnglishLetters({ onBack, onLessonSelect }) {
             >
               <div className="text-center">
                 <div
-                  className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${lesson.iconBg} text-white shadow-lg`}
+                  className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${lesson.iconBg} text-white shadow-lg relative`}
                 >
                   <span className="text-2xl font-bold">{lesson.letter}</span>
+                  {lesson.letterImage && (
+                    <div className="absolute -top-2 -right-2 text-3xl animate-bounce">
+                      {lesson.letterImage}
+                    </div>
+                  )}
                 </div>
                 <div className="bg-white bg-opacity-80 rounded-full px-3 py-1 mb-3">
                   <span className={`text-sm font-bold ${lesson.textColor}`}>
