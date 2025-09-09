@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 function Games() {
   const [selectedGame, setSelectedGame] = useState(null);
@@ -171,6 +172,22 @@ function PuzzleGame({ onClose }) {
 
     if (isComplete) {
       setIsWon(true);
+      // Toast bilan tabriknoma ko'rsatish
+      setTimeout(() => {
+        toast.success(`🎉 Tabriklaymiz! ${moves + 1} harakatda yechildi! 🏆`, {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }, 500);
+      
+      // 3 soniyadan keyin o'yinni avtomatik yangilash
+      setTimeout(() => {
+        initializeGame(level);
+      }, 3000);
     }
   };
 
@@ -245,19 +262,6 @@ function PuzzleGame({ onClose }) {
                 </div>
               </div>
 
-              {isWon && (
-                <div className="text-center mb-6 p-6 bg-gradient-to-r from-green-100 to-emerald-100 rounded-3xl border-4 border-green-300 shadow-lg flex-shrink-0">
-                  <div className="text-5xl mb-4">🎉✨🏆</div>
-                  <div className="text-2xl font-bold text-green-800 mb-2">Tabriklaymiz!</div>
-                  <div className="text-lg text-green-700 mb-4">{moves} harakatda yechildi!</div>
-                  <button
-                    onClick={() => initializeGame(level)}
-                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
-                  >
-                    🎮 Yana o'ynash
-                  </button>
-                </div>
-              )}
 
               <div className="bg-white p-8 rounded-3xl shadow-inner border-4 border-gray-200 flex-shrink-0">
                 <div

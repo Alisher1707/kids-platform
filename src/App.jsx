@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Lessons from './pages/Lessons';
 import Games from './pages/Games';
 import Cartoons from './pages/Cartoons';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -17,6 +19,18 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/cartoons" element={<Cartoons />} />
         </Routes>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </div>
     </Router>
   );

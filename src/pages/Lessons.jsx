@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import OnaTili from './OnaTili';
 import LessonDetail from './LessonDetail';
+import English from './English';
+import Russian from './Russian';
 
 function Lessons() {
   const [selectedSubject, setSelectedSubject] = useState(null);
@@ -57,6 +59,16 @@ function Lessons() {
       textColor: 'text-emerald-800',
       borderColor: 'border-emerald-200',
     },
+    {
+      id: 6,
+      title: "Ertaklar",
+      description: "Qiziqarli va ibratli ertaklar",
+      icon: '📖',
+      bgColor: 'bg-indigo-100 hover:bg-indigo-200',
+      iconBg: 'bg-indigo-400',
+      textColor: 'text-indigo-800',
+      borderColor: 'border-indigo-200',
+    },
   ];
 
   const openSubject = (subject) => {
@@ -82,6 +94,14 @@ function Lessons() {
 
   if (selectedSubject?.title === "Ona tili") {
     return <OnaTili onBack={closeSubject} onLessonSelect={openLesson} />;
+  }
+
+  if (selectedSubject?.title === "English") {
+    return <English onBack={closeSubject} />;
+  }
+
+  if (selectedSubject?.title === "Rus tili") {
+    return <Russian onBack={closeSubject} />;
   }
 
   return (

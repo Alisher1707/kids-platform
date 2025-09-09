@@ -56,8 +56,8 @@ function LessonDetail({ lesson, onBack }) {
               <h3 className={`text-2xl font-bold ${lesson.textColor} mb-6 text-center`}>
                 Joriy so'z:
               </h3>
-              <div className="text-center">
-                <div className={`text-9xl font-bold ${lesson.textColor} mb-6`}>
+              <div className="text-center overflow-hidden">
+                <div className={`text-4xl sm:text-5xl md:text-6xl font-bold ${lesson.textColor} mb-6 whitespace-nowrap px-2`}>
                   {currentWord}
                 </div>
                 
@@ -99,13 +99,13 @@ function LessonDetail({ lesson, onBack }) {
                   <button
                     key={index}
                     onClick={() => setCurrentWordIndex(index)}
-                    className={`p-6 rounded-xl border-3 transition-all duration-300 transform hover:scale-105 ${
+                    className={`p-6 rounded-xl border-3 transition-all duration-300 transform hover:scale-105 overflow-hidden ${
                       index === currentWordIndex 
                         ? `${lesson.bgColor} ${lesson.borderColor}` 
                         : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
                     }`}
                   >
-                    <span className={`font-bold text-2xl ${
+                    <span className={`font-bold text-lg whitespace-nowrap ${
                       index === currentWordIndex ? lesson.textColor : 'text-gray-800'
                     }`}>
                       {word}
@@ -126,14 +126,8 @@ function LessonDetail({ lesson, onBack }) {
                 <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border-4 border-blue-200">
                   <div className="grid grid-cols-5 gap-4">
                     {lesson.images && lesson.images.map((image, index) => (
-                      <div key={index} className="text-6xl">{image}</div>
+                      <div key={index} className="text-6xl hover:scale-110 transition-transform duration-200 cursor-pointer">{image}</div>
                     ))}
-                    <div className="text-6xl">🍇</div>
-                    <div className="text-6xl">🐻</div>
-                    <div className="text-6xl">🐰</div>
-                    <div className="text-6xl">🐶</div>
-                    <div className="text-6xl">🚗</div>
-                    <div className="text-6xl">⭐</div>
                   </div>
                 </div>
               </div>
