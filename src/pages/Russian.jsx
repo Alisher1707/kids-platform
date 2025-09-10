@@ -10,7 +10,7 @@ function Russian({ onBack }) {
     {
       id: 1,
       title: "Буквы",
-      description: "Rus alifbosi harflarini o'rganish",
+      description: "Изучение букв русского алфавита",
       icon: '🔤',
       bgColor: 'bg-purple-100 hover:bg-purple-200',
       iconBg: 'bg-purple-400',
@@ -20,7 +20,7 @@ function Russian({ onBack }) {
     {
       id: 2,
       title: "Слова",
-      description: "Rus tilida so'zlarni o'rganish",
+      description: "Изучение слов на русском языке",
       icon: '📝',
       bgColor: 'bg-indigo-100 hover:bg-indigo-200',
       iconBg: 'bg-indigo-400',
@@ -62,12 +62,12 @@ function Russian({ onBack }) {
             onClick={onBack}
             className="bg-purple-400 hover:bg-purple-500 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200 mr-6"
           >
-            ⬅️ Orqaga
+            ⬅️ Назад
           </button>
           <div className="text-center flex-1">
-            <h1 className="text-5xl font-bold text-purple-800 mb-4">Rus tili</h1>
+            <h1 className="text-5xl font-bold text-purple-800 mb-4">Русский язык</h1>
             <p className="text-xl text-purple-600">
-              Rus tilini o'rganish uchun interaktiv darslar
+              Интерактивные уроки для изучения русского языка
             </p>
           </div>
         </div>

@@ -151,7 +151,7 @@ function Cartoons() {
         {/* Video kartochkalari */}
         {!loading && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-            {videos.map((video, index) => (
+            {videos.map((video) => (
             <div
               key={video.id}
               className="bg-white rounded-3xl overflow-hidden shadow-lg border-4 border-yellow-200 transform transition-all duration-300 hover:scale-105 hover:shadow-xl"

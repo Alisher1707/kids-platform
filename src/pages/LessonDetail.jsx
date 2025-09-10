@@ -14,7 +14,7 @@ function LessonDetail({ lesson, onBack }) {
     }
   };
 
-  const getLetterImage = (letter, words) => {
+  const getLetterImage = (letter, _words) => {
     const letterImageMap = {
       // Ingliz harflari
       'A': '🍎', // Apple
