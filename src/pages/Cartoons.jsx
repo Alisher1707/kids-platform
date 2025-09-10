@@ -29,7 +29,7 @@ function Cartoons() {
           setVideos(defaultVideos);
         }
       } catch (error) {
-        console.error('Boshlang\'ich videolarni yuklashda xatolik:', error);
+        // Error loading initial videos
         setVideos(defaultVideos);
       } finally {
         setLoading(false);
@@ -43,7 +43,7 @@ function Cartoons() {
     const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
     
     if (!API_KEY) {
-      console.error('YouTube API key topilmadi');
+      // YouTube API key not found
       return defaultVideos;
     }
 
@@ -79,7 +79,7 @@ function Cartoons() {
       
       return defaultVideos;
     } catch (error) {
-      console.error('YouTube qidiruv xatoligi:', error);
+      // YouTube search error
       return defaultVideos;
     }
   };
@@ -97,7 +97,7 @@ function Cartoons() {
       const results = await searchYouTube(searchQuery);
       setVideos(results);
     } catch (error) {
-      console.error('Qidirishda xatolik:', error);
+      // Search error
       setVideos(defaultVideos);
     } finally {
       setLoading(false);

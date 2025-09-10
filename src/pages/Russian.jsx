@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import RussianLetters from './RussianLetters';
+import RussianWords from './RussianWords';
 import LessonDetail from './LessonDetail';
 
 function Russian({ onBack }) {
@@ -52,6 +53,10 @@ function Russian({ onBack }) {
 
   if (selectedSection?.title === "Буквы") {
     return <RussianLetters onBack={closeSection} onLessonSelect={openLesson} />;
+  }
+
+  if (selectedSection?.title === "Слова") {
+    return <RussianWords onBack={closeSection} onLessonSelect={openLesson} />;
   }
 
   return (

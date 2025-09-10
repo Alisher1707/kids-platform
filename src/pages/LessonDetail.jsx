@@ -1,82 +1,30 @@
 import { useState } from 'react';
 
 function LessonDetail({ lesson, onBack }) {
+  // Determine if this is a Russian lesson
+  const isRussianLesson = lesson.letter ? /[А-Яа-яЁё]/.test(lesson.letter) : 
+    (lesson.title && (lesson.title.includes('Изучаем букву') || lesson.title.includes('русского алфавита')));
+
   const playLetterSound = (letter) => {
-    // Web Speech API yordamida harfni talaffuz qilish
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(letter);
-      // Set Russian language for Russian letters, English for English letters
-      const isRussianLetter = /[А-Яа-яЁё]/.test(letter);
-      utterance.lang = isRussianLetter ? 'ru-RU' : 'en-US';
-      utterance.rate = 0.8; // Sekin talaffuz
-      utterance.pitch = 1.2; // Yuqori ovoz
+      utterance.lang = isRussianLesson ? 'ru-RU' : 'en-US';
+      utterance.rate = 0.8;
+      utterance.pitch = 1.2;
       speechSynthesis.speak(utterance);
     }
   };
 
   const getLetterImage = (letter) => {
     const letterImageMap = {
-      // Ingliz harflari
-      'A': '🍎', // Apple
-      'B': '⚽', // Ball
-      'C': '🐱', // Cat
-      'D': '🐕', // Dog
-      'E': '🐘', // Elephant
-      'F': '🐟', // Fish
-      'G': '🐐', // Goat
-      'H': '🏠', // House
-      'I': '🧊', // Ice
-      'J': '🦘', // Jump
-      'K': '🗝️', // Key
-      'L': '❤️', // Love
-      'M': '🌙', // Moon
-      'N': '👃', // Nose
-      'O': '🍊', // Orange
-      'P': '✏️', // Pen
-      'Q': '👸', // Queen
-      'R': '🔴', // Red
-      'S': '☀️', // Sun
-      'T': '🌳', // Tree
-      'U': '☂️', // Umbrella
-      'V': '🗣️', // Voice
-      'W': '💧', // Water
-      'X': '🩻', // X-ray
-      'Y': '💛', // Yellow
-      'Z': '🦓', // Zebra
-      // Rus harflari
-      'А': '🍉', // Арбуз
-      'Б': '🍌', // Банан
-      'В': '🐺', // Волк
-      'Г': '🦢', // Гусь
-      'Д': '🏠', // Дом
-      'Е': '🦝', // Енот
-      'Ё': '🦔', // Ёж
-      'Ж': '🪲', // Жук
-      'З': '🐰', // Заяц
-      'И': '🎮', // Игра
-      'Й': '🥛', // Йогурт
-      'К': '🐱', // Кот
-      'Л': '🦁', // Лев
-      'М': '🐻', // Медведь
-      'Н': '🦏', // Носорог
-      'О': '🦌', // Олень
-      'П': '🐓', // Петух
-      'Р': '🐟', // Рыба
-      'С': '☀️', // Солнце
-      'Т': '🐅', // Тигр
-      'У': '🦆', // Утка
-      'Ф': '🦩', // Фламинго
-      'Х': '🐹', // Хомяк
-      'Ц': '🌸', // Цветок
-      'Ч': '🐢', // Черепаха
-      'Ш': '🎈', // Шар
-      'Щ': '🐶', // Щенок
-      'Ъ': '🏢', // Подъезд
-      'Ы': '🧼', // Мыло
-      'Ь': '🐻', // Медведь
-      'Э': '🍦', // Эскимо
-      'Ю': '🌀', // Юла
-      'Я': '🍎', // Яблоко
+      'A': '🍎', 'B': '⚽', 'C': '🐱', 'D': '🐕', 'E': '🐘', 'F': '🐟', 'G': '🐐', 'H': '🏠', 
+      'I': '🧊', 'J': '🦘', 'K': '🗝️', 'L': '❤️', 'M': '🌙', 'N': '👃', 'O': '🍊', 'P': '✏️', 
+      'Q': '👸', 'R': '🔴', 'S': '☀️', 'T': '🌳', 'U': '☂️', 'V': '🗣️', 'W': '💧', 'X': '🩻', 
+      'Y': '💛', 'Z': '🦓',
+      'А': '🍉', 'Б': '🍌', 'В': '🐺', 'Г': '🦢', 'Д': '🏠', 'Е': '🦝', 'Ё': '🦔', 'Ж': '🪲', 
+      'З': '🐰', 'И': '🎮', 'Й': '🥛', 'К': '🐱', 'Л': '🦁', 'М': '🐻', 'Н': '🦏', 'О': '🦌', 
+      'П': '🐓', 'Р': '🐟', 'С': '☀️', 'Т': '🐅', 'У': '🦆', 'Ф': '🦩', 'Х': '🐹', 'Ц': '🌸', 
+      'Ч': '🐢', 'Ш': '🎈', 'Щ': '🐶', 'Ъ': '🏢', 'Ы': '🧼', 'Ь': '🐻', 'Э': '🍦', 'Ю': '🌀', 'Я': '🍎'
     };
     return letterImageMap[letter] || '';
   };
@@ -104,7 +52,7 @@ function LessonDetail({ lesson, onBack }) {
             onClick={onBack}
             className="bg-green-400 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200 mr-6"
           >
-            {/[А-Яа-яЁё]/.test(lesson.letter) ? '⬅️ Назад' : 
+            {isRussianLesson ? '⬅️ Назад' : 
              (lesson.title && lesson.title.includes('harfi')) ? '⬅️ Orqaga' :
              '⬅️ Back'}
           </button>
@@ -134,15 +82,15 @@ function LessonDetail({ lesson, onBack }) {
                 </div>
                 <div className="flex items-center justify-center space-x-3 mb-4">
                   <h2 className={`text-3xl font-bold ${lesson.textColor}`}>
-                    {/[А-Яа-яЁё]/.test(lesson.letter) ? `Буква ${lesson.letter}` : 
-                     (lesson.title && lesson.title.includes('harfi')) ? `${lesson.letter} harfi` :
-                     `Letter ${lesson.letter}`}
+                    {isRussianLesson ? `Буква ${lesson.letter || ''}` : 
+                     (lesson.title && lesson.title.includes('harfi')) ? `${lesson.letter || ''} harfi` :
+                     `Letter ${lesson.letter || ''}`}
                   </h2>
-                  {((/[A-Za-z]/.test(lesson.letter) && lesson.words && lesson.words.some(word => /^[A-Za-z]+$/.test(word))) || /[А-Яа-яЁё]/.test(lesson.letter)) && (
+                  {lesson.letter && (
                     <button
                       onClick={() => playLetterSound(lesson.letter)}
                       className="w-10 h-10 bg-yellow-400 hover:bg-yellow-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-200 animate-pulse"
-                      title={/[А-Яа-яЁё]/.test(lesson.letter) ? `Послушайте букву ${lesson.letter}` : 
+                      title={isRussianLesson ? `Послушайте букву ${lesson.letter}` : 
                              (lesson.title && lesson.title.includes('harfi')) ? `${lesson.letter} harfini tinglang` :
                              `Listen to letter ${lesson.letter}`}
                     >
@@ -155,7 +103,7 @@ function LessonDetail({ lesson, onBack }) {
 
             <div className="bg-white rounded-3xl p-8 shadow-lg border-4 border-blue-200">
               <h3 className={`text-2xl font-bold ${lesson.textColor} mb-6 text-center`}>
-                {/[А-Яа-яЁё]/.test(lesson.letter) ? 'Текущее слово:' : 
+                {isRussianLesson ? 'Текущее слово:' : 
                  (lesson.title && lesson.title.includes('harfi')) ? 'Joriy so\'z:' :
                  'Current Word:'}
               </h3>
@@ -170,7 +118,7 @@ function LessonDetail({ lesson, onBack }) {
                     disabled={currentWordIndex === 0}
                     className={`bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200 ${currentWordIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
-                    {/[А-Яа-яЁё]/.test(lesson.letter) ? '⬅️ Предыдущее' : 
+                    {isRussianLesson ? '⬅️ Предыдущее' : 
                      (lesson.title && lesson.title.includes('harfi')) ? '⬅️ Oldingi' :
                      '⬅️ Previous'}
                   </button>
@@ -184,7 +132,7 @@ function LessonDetail({ lesson, onBack }) {
                     disabled={currentWordIndex === lesson.words.length - 1}
                     className={`bg-blue-400 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200 ${currentWordIndex === lesson.words.length - 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
-                    {/[А-Яа-яЁё]/.test(lesson.letter) ? 'Следующее ➡️' : 
+                    {isRussianLesson ? 'Следующее ➡️' : 
                      (lesson.title && lesson.title.includes('harfi')) ? 'Keyingi ➡️' :
                      'Next ➡️'}
                   </button>
@@ -197,7 +145,7 @@ function LessonDetail({ lesson, onBack }) {
           <div className="space-y-6">
             <div className="bg-white rounded-3xl p-8 shadow-lg border-4 border-purple-200">
               <h3 className={`text-2xl font-bold ${lesson.textColor} mb-6 text-center`}>
-                {/[А-Яа-яЁё]/.test(lesson.letter) ? 'Все слова:' : 
+                {isRussianLesson ? 'Все слова:' : 
                  (lesson.title && lesson.title.includes('harfi')) ? 'Barcha so\'zlar:' :
                  'All Words:'}
               </h3>
@@ -224,17 +172,17 @@ function LessonDetail({ lesson, onBack }) {
 
             <div className="bg-white rounded-3xl p-8 shadow-lg border-4 border-yellow-200">
               <h3 className={`text-2xl font-bold ${lesson.textColor} mb-4 text-center`}>
-                {/[А-Яа-яЁё]/.test(lesson.letter) ? '📖 Практика' : 
+                {isRussianLesson ? '📖 Практика' : 
                  (lesson.title && lesson.title.includes('harfi')) ? '📖 Mashq qilish' :
                  '📖 Practice'}
               </h3>
               <div className="text-center">
                 <p className="text-lg text-gray-700 mb-4">
-                  {/[А-Яа-яЁё]/.test(lesson.letter) 
-                    ? `Найдите предметы на букву ${lesson.letter}` 
+                  {isRussianLesson 
+                    ? `Найдите предметы на букву ${lesson.letter || ''}` 
                     : (lesson.title && lesson.title.includes('harfi'))
-                    ? `Rasmdan ${lesson.letter} harfiga oid narsalarni toping`
-                    : `Find things that start with letter ${lesson.letter}`
+                    ? `Rasmdan ${lesson.letter || ''} harfiga oid narsalarni toping`
+                    : `Find things that start with letter ${lesson.letter || ''}`
                   }
                 </p>
                 <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border-4 border-blue-200">
