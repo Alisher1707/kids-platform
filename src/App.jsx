@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Lessons from './pages/Lessons';
 import Games from './pages/Games';
 import Cartoons from './pages/Cartoons';
+import LoginPage from './pages/LoginPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/games" element={<Games />} />
           <Route path="/cartoons" element={<Cartoons />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
         <ToastContainer
           position="top-center"

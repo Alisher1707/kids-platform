@@ -12,11 +12,11 @@ function Navbar() {
         </Link>
         
         <div className="flex items-center">
-          <div className="w-12 h-12 bg-orange-100 rounded-full overflow-hidden border-3 border-orange-300 shadow-md">
-            <div className="w-full h-full bg-orange-200 flex items-center justify-center">
+          <Link to="/login" className="w-12 h-12 bg-orange-100 rounded-full overflow-hidden border-3 border-orange-300 shadow-md hover:bg-orange-200 hover:scale-105 transition-all duration-300 cursor-pointer">
+            <div className="w-full h-full bg-orange-200 flex items-center justify-center hover:bg-orange-300">
               <span className="text-2xl">👶</span>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </nav>
