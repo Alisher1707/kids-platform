@@ -72,7 +72,7 @@ function Russian({ onBack }) {
           </div>
         </div>
 
-        {/* Sections kartochkalari */}
+        {/* Карточки разделов */}
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {sections.map((section) => (
             <div
