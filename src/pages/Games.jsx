@@ -87,7 +87,7 @@ function PuzzleGame({ onClose }) {
   const [grid, setGrid] = useState([]);
   const [emptyIndex, setEmptyIndex] = useState(0);
   const [moves, setMoves] = useState(0);
-  const [_isWon, setIsWon] = useState(false);
+  const [isWon, setIsWon] = useState(false);
 
   const levels = [
     { name: '2x2', size: 2, title: 'Oson' },

@@ -1,7 +1,4 @@
-import { useState } from 'react';
-
 function OnaTili({ onBack, onLessonSelect }) {
-  const [selectedLesson, setSelectedLesson] = useState(null);
 
   const lessons = [
     {

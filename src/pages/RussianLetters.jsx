@@ -1,8 +1,4 @@
-import { useState } from 'react';
-import LessonDetail from './LessonDetail';
-
 function RussianLetters({ onBack, onLessonSelect }) {
-  const [selectedLesson, setSelectedLesson] = useState(null);
 
   const lessons = [
     {

@@ -14,7 +14,7 @@ function LessonDetail({ lesson, onBack }) {
     }
   };
 
-  const getLetterImage = (letter, _words) => {
+  const getLetterImage = (letter) => {
     const letterImageMap = {
       // Ingliz harflari
       'A': '🍎', // Apple
@@ -126,9 +126,9 @@ function LessonDetail({ lesson, onBack }) {
               <div className="text-center">
                 <div className={`w-40 h-40 mx-auto mb-6 rounded-3xl flex items-center justify-center ${lesson.iconBg} text-white shadow-2xl relative`}>
                   <span className="text-8xl font-bold">{lesson.letter}</span>
-                  {(lesson.letterImage || getLetterImage(lesson.letter, lesson.words)) && (
+                  {(lesson.letterImage || getLetterImage(lesson.letter)) && (
                     <div className="absolute -top-4 -right-4 text-6xl animate-bounce">
-                      {lesson.letterImage || getLetterImage(lesson.letter, lesson.words)}
+                      {lesson.letterImage || getLetterImage(lesson.letter)}
                     </div>
                   )}
                 </div>
@@ -175,11 +175,9 @@ function LessonDetail({ lesson, onBack }) {
                      '⬅️ Previous'}
                   </button>
                   
-                  <div className={`px-6 py-3 rounded-full ${lesson.bgColor} ${lesson.borderColor} border-3`}>
-                    <span className={`font-bold ${lesson.textColor}`}>
-                      {currentWordIndex + 1} / {lesson.words.length}
-                    </span>
-                  </div>
+                  <span className={`font-bold text-xl ${lesson.textColor}`}>
+                    {currentWordIndex + 1} / {lesson.words.length}
+                  </span>
                   
                   <button
                     onClick={nextWord}
