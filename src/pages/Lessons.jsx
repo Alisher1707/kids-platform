@@ -3,6 +3,7 @@ import OnaTili from './OnaTili';
 import LessonDetail from './LessonDetail';
 import English from './English';
 import Russian from './Russian';
+import Matematika from './Matematika';
 
 function Lessons() {
   const [selectedSubject, setSelectedSubject] = useState(null);
@@ -102,6 +103,10 @@ function Lessons() {
 
   if (selectedSubject?.title === "Rus tili") {
     return <Russian onBack={closeSubject} />;
+  }
+
+  if (selectedSubject?.title === "Matematika") {
+    return <Matematika onBack={closeSubject} />;
   }
 
   return (
