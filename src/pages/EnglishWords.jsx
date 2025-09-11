@@ -1,4 +1,3 @@
-import LessonDetail from './LessonDetail';
 
 function EnglishWords({ onBack, onLessonSelect }) {
 

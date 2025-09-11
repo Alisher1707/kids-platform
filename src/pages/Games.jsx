@@ -25,6 +25,16 @@ function Games() {
       textColor: 'text-blue-800',
       game: 'colorTap',
     },
+    {
+      id: 3,
+      title: "Hayvonlarni Top",
+      description: "Hayvon ovozlarini eshiting va toping",
+      icon: '🐾',
+      bgColor: 'bg-green-100 hover:bg-green-200',
+      iconBg: 'bg-green-400',
+      textColor: 'text-green-800',
+      game: 'animalSound',
+    },
   ];
 
   const openGame = (game) => {
@@ -45,6 +55,9 @@ function Games() {
         {selectedGame && selectedGame.game === 'colorTap' && (
           <ColorTapGame onClose={closeGame} />
         )}
+        {selectedGame && selectedGame.game === 'animalSound' && (
+          <AnimalSoundGame onClose={closeGame} />
+        )}
 
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-pink-800 mb-6">🎮 O'yinlar</h1>
@@ -54,7 +67,7 @@ function Games() {
         </div>
 
         {/* O'yinlar kartochkalari */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {games.map((game) => (
             <div
               key={game.id}
@@ -193,8 +206,8 @@ function PuzzleGame({ onClose }) {
 
   return (
     <div className="fixed inset-0 bg-purple-200 bg-opacity-20 backdrop-blur-sm z-50 flex items-center justify-center p-2 h-screen overflow-hidden">
-      <div className="bg-white bg-opacity-95 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white border-opacity-30 flex flex-col max-w-4xl w-full max-h-full">
-        <div className="flex justify-between items-center mb-8 flex-shrink-0">
+      <div className="bg-white bg-opacity-95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-white border-opacity-30 flex flex-col max-w-3xl w-full max-h-[90vh]">
+        <div className="flex justify-between items-center mb-6 flex-shrink-0">
           <div className="flex items-center space-x-6">
             <div className="w-16 h-16 bg-pink-400 rounded-full flex items-center justify-center shadow-lg">
               <span className="text-3xl">🧩</span>
@@ -212,8 +225,8 @@ function PuzzleGame({ onClose }) {
         <div className="flex-1 flex flex-col justify-center overflow-hidden">
           {!level ? (
             <div className="text-center px-8">
-              <h3 className="text-3xl font-bold text-pink-800 mb-8">🎯 Darajani tanlang:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <h3 className="text-4xl font-bold text-pink-800 mb-10">🎯 Darajani tanlang:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
                 {levels.map((lvl, index) => (
                   <button
                     key={lvl.name}
@@ -222,15 +235,15 @@ function PuzzleGame({ onClose }) {
                       ${index === 0 ? 'bg-green-100 hover:bg-green-200 border-green-300' : ''}
                       ${index === 1 ? 'bg-yellow-100 hover:bg-yellow-200 border-yellow-300' : ''}
                       ${index === 2 ? 'bg-red-100 hover:bg-red-200 border-red-300' : ''}
-                      text-gray-800 font-bold py-8 px-6 rounded-3xl border-4 transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-visible
+                      text-gray-800 font-bold py-6 px-4 rounded-3xl border-4 transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-visible
                     `}
                     style={{ transform: 'scale(1)', transformOrigin: 'center' }}
                     onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
                     onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                   >
-                    <div className="text-5xl mb-4">{index === 0 ? '😊' : index === 1 ? '🤔' : '🤯'}</div>
-                    <div className="text-2xl font-bold mb-3">{lvl.title}</div>
-                    <div className="text-xl text-gray-600">{lvl.name}</div>
+                    <div className="text-4xl mb-3">{index === 0 ? '😊' : index === 1 ? '🤔' : '🤯'}</div>
+                    <div className="text-xl font-bold mb-2">{lvl.title}</div>
+                    <div className="text-lg text-gray-600">{lvl.name}</div>
                   </button>
                 ))}
               </div>
@@ -263,12 +276,12 @@ function PuzzleGame({ onClose }) {
               </div>
 
 
-              <div className="bg-white p-8 rounded-3xl shadow-inner border-4 border-gray-200 flex-shrink-0">
+              <div className="bg-white p-4 rounded-3xl shadow-inner border-4 border-gray-200 flex-shrink-0">
                 <div
-                  className="grid gap-4 mx-auto"
+                  className="grid gap-3 mx-auto"
                   style={{
                     gridTemplateColumns: `repeat(${level}, 1fr)`,
-                    width: level === 2 ? '320px' : level === 3 ? '400px' : '480px',
+                    width: level === 2 ? '240px' : level === 3 ? '300px' : '360px',
                   }}
                 >
                   {grid.map((tile, index) => (
@@ -486,6 +499,366 @@ function ColorTapGame({ onClose }) {
                   )}
                 </div>
               </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AnimalSoundGame({ onClose }) {
+  const [currentAnimal, setCurrentAnimal] = useState(null);
+  const [score, setScore] = useState(0);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const [selectedAnimal, setSelectedAnimal] = useState(null);
+  const [currentStage, setCurrentStage] = useState(1);
+  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [stageScore, setStageScore] = useState(0);
+  const [stageResults, setStageResults] = useState([]);
+  const [showStageResult, setShowStageResult] = useState(false);
+  const [showFinalResult, setShowFinalResult] = useState(false);
+  const [gameComplete, setGameComplete] = useState(false);
+  const [usedAnimals, setUsedAnimals] = useState([]);
+
+  const animals = [
+    { id: 1, name: 'Mushuk', emoji: '🐱', sound: 'Myav myav', description: 'Miyovlaydi' },
+    { id: 2, name: 'It', emoji: '🐶', sound: 'Vov vov', description: 'Vovlaydi' },
+    { id: 3, name: 'Sigir', emoji: '🐮', sound: 'Moo moo', description: 'Moolaydi' },
+    { id: 4, name: 'Qo\'y', emoji: '🐑', sound: 'Baa baa', description: 'Baalaydi' },
+    { id: 5, name: 'Pishiq', emoji: '😸', sound: 'Purr purr', description: 'Shingillaydi' },
+    { id: 6, name: 'O\'rdak', emoji: '🦆', sound: 'Quack quack', description: 'Vaqlaydi' },
+    { id: 7, name: 'Tovuq', emoji: '🐔', sound: 'Kokko kokko', description: 'Xo\'rozlaydi' },
+    { id: 8, name: 'Sher', emoji: '🦁', sound: 'Roar roar', description: 'Bo\'kiraydi' },
+    { id: 9, name: 'Fil', emoji: '🐘', sound: 'Trumpet trumpet', description: 'Karnay chalib ovoz chiqaradi' },
+    { id: 10, name: 'Ot', emoji: '🐎', sound: 'Neigh neigh', description: 'Kishnaganday ovoz chiqaradi' },
+    { id: 11, name: 'Qush', emoji: '🐦', sound: 'Chirp chirp', description: 'Sayraydi' },
+    { id: 12, name: 'Maymun', emoji: '🐵', sound: 'Ooh ooh', description: 'Maymuncha ovoz chiqaradi' },
+    { id: 13, name: 'Ayiq', emoji: '🐻', sound: 'Grrrr', description: 'Homirlab ovoz chiqaradi' },
+    { id: 14, name: 'Qoplonbars', emoji: '🐅', sound: 'Growl growl', description: 'Xirillaydi' },
+    { id: 15, name: 'Zebra', emoji: '🦓', sound: 'Neigh whinny', description: 'Otday ovoz chiqaradi' },
+    { id: 16, name: 'Jiraf', emoji: '🦒', sound: 'Hmm hmm', description: 'Jimgina ovoz chiqaradi' },
+    { id: 17, name: 'Pingvin', emoji: '🐧', sound: 'Squawk squawk', description: 'Chiyillaydi' },
+    { id: 18, name: 'Burgut', emoji: '🦅', sound: 'Screech screech', description: 'Qichqiradi' },
+    { id: 19, name: 'Qo\'zi', emoji: '🐑', sound: 'Baa baa', description: 'Mayda ovozda baalaydi' },
+    { id: 20, name: 'Mushukcha', emoji: '🐈', sound: 'Meow meow', description: 'Mayda ovozda miyovlaydi' },
+    { id: 21, name: 'Itcha', emoji: '🐕', sound: 'Yip yip', description: 'Mayda ovozda vovlaydi' },
+    { id: 22, name: 'Xo\'roz', emoji: '🐓', sound: 'Kukuriku', description: 'Ertalab qo\'shiq aytadi' },
+    { id: 23, name: 'G\'oz', emoji: '🪿', sound: 'Honk honk', description: 'G\'ozday ovoz chiqaradi' },
+    { id: 24, name: 'Orol', emoji: '🦎', sound: 'Hiss hiss', description: 'Shivirlaydi' },
+    { id: 25, name: 'Baliq', emoji: '🐟', sound: 'Blub blub', description: 'Suv ostida pufakcha chiqaradi' }
+  ];
+
+  const startGame = () => {
+    setGameStarted(true);
+    setScore(0);
+    setStageScore(0);
+    setCurrentStage(1);
+    setCurrentQuestion(1);
+    setStageResults([]);
+    setShowResult(false);
+    setShowStageResult(false);
+    setShowFinalResult(false);
+    setGameComplete(false);
+    setUsedAnimals([]);
+    nextRound();
+  };
+
+  const getRandomAnimalsForChoice = (correctAnimal) => {
+    // To'g'ri hayvonni ro'yxatga qo'shish
+    const choices = [correctAnimal];
+    
+    // Qolgan hayvonlardan tasodifiy 7 tasini tanlash
+    const otherAnimals = animals.filter(animal => animal.id !== correctAnimal.id);
+    const shuffledOthers = otherAnimals.sort(() => Math.random() - 0.5);
+    
+    // Jami 8 ta hayvon bo'lishi uchun 7 ta qo'shish
+    for (let i = 0; i < Math.min(7, shuffledOthers.length); i++) {
+      choices.push(shuffledOthers[i]);
+    }
+    
+    // Natijani aralashtirib qaytarish
+    return choices.sort(() => Math.random() - 0.5);
+  };
+
+  const nextRound = () => {
+    // Ishlatilmagan hayvonlarni topish
+    const availableAnimals = animals.filter(animal => !usedAnimals.includes(animal.id));
+    
+    if (availableAnimals.length === 0) {
+      // Agar barcha hayvonlar ishlatilgan bo'lsa, o'yinni tugatish
+      setGameComplete(true);
+      setShowFinalResult(true);
+      return;
+    }
+    
+    const randomAnimal = availableAnimals[Math.floor(Math.random() * availableAnimals.length)];
+    setCurrentAnimal(randomAnimal);
+    setUsedAnimals([...usedAnimals, randomAnimal.id]);
+    setSelectedAnimal(null);
+    setShowResult(false);
+  };
+
+  const playAnimalSound = () => {
+    if (currentAnimal) {
+      // Web Speech API bilan ovoz chiqarish
+      const utterance = new SpeechSynthesisUtterance(currentAnimal.sound);
+      utterance.rate = 0.8;
+      utterance.pitch = 1.2;
+      utterance.volume = 1;
+      speechSynthesis.speak(utterance);
+    }
+  };
+
+  const selectAnimal = (animal) => {
+    setSelectedAnimal(animal);
+    
+    if (animal.id === currentAnimal.id) {
+      const newStageScore = stageScore + 20;
+      const newScore = score + 20;
+      setStageScore(newStageScore);
+      setScore(newScore);
+      setShowResult(true);
+      
+      toast.success(`To'g'ri! ${animal.name} ${animal.sound} qiladi! 🎉`, {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      
+      setTimeout(() => {
+        if (currentQuestion >= 5) {
+          // Bosqich tugadi
+          const stageResult = {
+            stage: currentStage,
+            score: newStageScore,
+            questions: 5
+          };
+          setStageResults([...stageResults, stageResult]);
+          
+          if (currentStage >= 5) {
+            // O'yin tugadi
+            setGameComplete(true);
+            setShowFinalResult(true);
+          } else {
+            // Keyingi bosqichga o'tish
+            setShowStageResult(true);
+          }
+        } else {
+          // Keyingi savol
+          setCurrentQuestion(currentQuestion + 1);
+          nextRound();
+        }
+      }, 2000);
+    } else {
+      toast.error(`Xato! ${currentAnimal.name} ${currentAnimal.sound} qiladi 😊`, {
+        position: "top-center",
+        autoClose: 3000,
+      });
+      setTimeout(() => {
+        setSelectedAnimal(null);
+        if (currentQuestion >= 5) {
+          // Bosqich tugadi (xato javob bilan)
+          const stageResult = {
+            stage: currentStage,
+            score: stageScore,
+            questions: 5
+          };
+          setStageResults([...stageResults, stageResult]);
+          
+          if (currentStage >= 5) {
+            setGameComplete(true);
+            setShowFinalResult(true);
+          } else {
+            setShowStageResult(true);
+          }
+        } else {
+          setCurrentQuestion(currentQuestion + 1);
+          nextRound();
+        }
+      }, 1500);
+    }
+  };
+
+  const nextStage = () => {
+    setCurrentStage(currentStage + 1);
+    setCurrentQuestion(1);
+    setStageScore(0);
+    setShowStageResult(false);
+    nextRound();
+  };
+
+  const restartGame = () => {
+    startGame();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-purple-200 bg-opacity-20 backdrop-blur-sm z-50 flex items-center justify-center p-2 h-screen overflow-hidden">
+      <div className="bg-white bg-opacity-95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-white border-opacity-30 flex flex-col max-w-4xl w-full max-h-[90vh]">
+        <div className="flex justify-between items-center mb-6 flex-shrink-0">
+          <div className="flex items-center space-x-6">
+            <div className="w-16 h-16 bg-green-400 rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-3xl">🐾</span>
+            </div>
+            <h2 className="text-4xl font-bold text-green-800">Hayvonlarni Top</h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="bg-red-400 hover:bg-red-500 text-white font-bold py-4 px-6 rounded-full text-2xl shadow-lg transform hover:scale-105 transition-all duration-200"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div className="flex-1 flex flex-col justify-center overflow-hidden">
+          {!gameStarted ? (
+            <div className="text-center">
+              <div className="text-8xl mb-6">🎵</div>
+              <h3 className="text-3xl font-bold text-green-800 mb-6">Hayvon ovozlarini toping!</h3>
+              <p className="text-xl text-gray-600 mb-4">
+                5 bosqich, har bosqichda 5 ta savol
+              </p>
+              <p className="text-lg text-gray-500 mb-8">
+                Hayvon ovozini eshitib, to'g'ri hayvonni tanlang
+              </p>
+              <button
+                onClick={startGame}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+              >
+                🎮 O'yinni boshlash
+              </button>
+            </div>
+          ) : showStageResult ? (
+            <div className="text-center">
+              <div className="text-8xl mb-6">🏆</div>
+              <h3 className="text-3xl font-bold text-green-800 mb-6">
+                {currentStage}-bosqich tugadi!
+              </h3>
+              <div className="bg-green-100 rounded-3xl p-6 mb-6 border-4 border-green-200">
+                <p className="text-2xl font-bold text-green-800 mb-3">
+                  Natija: {stageScore}/100 ball
+                </p>
+                <p className="text-lg text-green-600">
+                  {stageScore >= 80 ? '🌟 Ajoyib!' : stageScore >= 60 ? '👍 Yaxshi!' : '💪 Harakat qiling!'}
+                </p>
+              </div>
+              <button
+                onClick={nextStage}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+              >
+                ➡️ Keyingi bosqich
+              </button>
+            </div>
+          ) : showFinalResult ? (
+            <div className="text-center">
+              <div className="text-8xl mb-6">🎉</div>
+              <h3 className="text-3xl font-bold text-green-800 mb-6">
+                O'yin tugadi!
+              </h3>
+              <div className="bg-gradient-to-r from-green-100 to-blue-100 rounded-3xl p-6 mb-6 border-4 border-green-200">
+                <p className="text-3xl font-bold text-green-800 mb-4">
+                  Umumiy ball: {score}/500
+                </p>
+                <div className="space-y-2 mb-4">
+                  {stageResults.map((result, index) => (
+                    <div key={index} className="flex justify-between items-center bg-white rounded-xl p-3">
+                      <span className="text-lg font-semibold">{result.stage}-bosqich:</span>
+                      <span className="text-lg font-bold text-blue-600">{result.score}/100</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xl text-green-600">
+                  {score >= 400 ? '🌟 Mukammal!' : score >= 300 ? '👍 Juda yaxshi!' : score >= 200 ? '😊 Yaxshi!' : '💪 Yana urinib ko\'ring!'}
+                </p>
+              </div>
+              <button
+                onClick={restartGame}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+              >
+                🔄 Qayta boshlash
+              </button>
+            </div>
+          ) : (
+            <div>
+              <div className="flex justify-center items-center mb-6 flex-shrink-0">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-green-100 px-4 py-2 rounded-full border-3 border-green-200">
+                    <span className="text-green-800 font-bold text-sm">🏆 {score} ball</span>
+                  </div>
+                  <div className="bg-blue-100 px-4 py-2 rounded-full border-3 border-blue-200">
+                    <span className="text-blue-800 font-bold text-sm">📊 {currentStage}-bosqich</span>
+                  </div>
+                  <div className="bg-purple-100 px-4 py-2 rounded-full border-3 border-purple-200">
+                    <span className="text-purple-800 font-bold text-sm">❓ {currentQuestion}/5</span>
+                  </div>
+                  <div className="bg-yellow-100 px-4 py-2 rounded-full border-3 border-yellow-200">
+                    <span className="text-yellow-800 font-bold text-sm">⭐ {stageScore}</span>
+                  </div>
+                </div>
+              </div>
+
+              {currentAnimal && (
+                <div className="bg-white p-6 rounded-3xl shadow-inner border-4 border-gray-200 flex-shrink-0">
+                  <div className="text-center mb-8">
+                    <button
+                      onClick={playAnimalSound}
+                      className="text-8xl mb-4 hover:scale-110 transition-transform duration-300 bg-blue-100 rounded-full p-4 shadow-lg hover:shadow-xl border-4 border-blue-200 hover:border-blue-400"
+                    >
+                      🔊
+                    </button>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-4">Bu hayvon qanday ovoz chiqaradi?</h3>
+                    <div className="bg-yellow-100 rounded-2xl p-4 border-4 border-yellow-200 mb-6">
+                      <p className="text-3xl font-bold text-yellow-800">"{currentAnimal.sound}"</p>
+                      <p className="text-lg text-yellow-600 mt-2">{currentAnimal.description}</p>
+                      <button
+                        onClick={playAnimalSound}
+                        className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full text-sm shadow-md hover:shadow-lg transition-all duration-200"
+                      >
+                        🔊 Ovozni eshitish
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+                    {currentAnimal && getRandomAnimalsForChoice(currentAnimal).map((animal) => (
+                      <button
+                        key={animal.id}
+                        onClick={() => selectAnimal(animal)}
+                        disabled={selectedAnimal !== null}
+                        className={`
+                          p-3 rounded-2xl border-3 transition-all duration-300 transform
+                          ${selectedAnimal === animal
+                            ? animal.id === currentAnimal.id
+                              ? 'bg-green-200 border-green-400 scale-110 shadow-lg'
+                              : 'bg-red-200 border-red-400 scale-95'
+                            : 'bg-gray-100 border-gray-300 hover:border-green-300 hover:bg-green-50 hover:scale-105'
+                          }
+                          ${selectedAnimal ? 'cursor-not-allowed' : 'cursor-pointer'}
+                          shadow-md hover:shadow-xl
+                        `}
+                      >
+                        <div className="text-3xl mb-1">{animal.emoji}</div>
+                        <div className="text-base font-bold text-gray-700">{animal.name}</div>
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="text-center mt-6">
+                    <button
+                      onClick={nextRound}
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200 mr-4"
+                    >
+                      🔄 Keyingi savol
+                    </button>
+                    <button
+                      onClick={() => setGameStarted(false)}
+                      className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
+                    >
+                      ⬅️ Boshiga qaytish
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

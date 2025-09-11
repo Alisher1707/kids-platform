@@ -1,4 +1,3 @@
-import LessonDetail from './LessonDetail';
 
 function EnglishLetters({ onBack, onLessonSelect }) {
 

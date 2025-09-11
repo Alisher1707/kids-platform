@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import fishesVideo from '/Fishes.mp4';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -46,29 +45,14 @@ function LoginPage() {
   };
 
   return (
-    <div className="fixed inset-0 w-full h-full overflow-hidden">
-      {/* Video Background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        style={{ minWidth: '100%', minHeight: '100%' }}
-      >
-        <source src={fishesVideo} type="video/mp4" />
-      </video>
-      
-      {/* Overlay for better readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div className="min-h-screen bg-white">
       
       {/* Content Container */}
-      <div className="relative z-10 h-full flex items-start justify-center pt-16 p-4">
+      <div className="flex items-start justify-center min-h-screen p-4 pt-16">
 
         <div className="w-full max-w-sm">
           {/* Main login card */}
-          <div className="bg-white bg-opacity-95 backdrop-blur-lg rounded-2xl shadow-2xl border-3 border-white p-5 transform hover:scale-102 transition-all duration-300">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 transform hover:scale-102 transition-all duration-300">
           {/* Header */}
           <div className="text-center mb-5">
             <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center shadow-lg">
