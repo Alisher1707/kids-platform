@@ -4,6 +4,7 @@ import LessonDetail from './LessonDetail';
 import English from './English';
 import Russian from './Russian';
 import Matematika from './Matematika';
+import Tabiat from './Tabiat';
 
 function Lessons() {
   const [selectedSubject, setSelectedSubject] = useState(null);
@@ -107,6 +108,10 @@ function Lessons() {
 
   if (selectedSubject?.title === "Matematika") {
     return <Matematika onBack={closeSubject} />;
+  }
+
+  if (selectedSubject?.title === "Tabiat") {
+    return <Tabiat onBack={closeSubject} />;
   }
 
   return (
